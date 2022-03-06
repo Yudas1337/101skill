@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../helpers/uriHelper.php";
+require_once __DIR__ . "/../../app/helpers/uriHelper.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,11 +7,11 @@ require_once __DIR__ . "/../../helpers/uriHelper.php";
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="MalangSnack, Gudang Oleh-oleh, Malang" />
+    <meta name="keywords" content="101Skill - Platform belajar secara gratis" />
     <meta name="author" content="Yudas Malabi" />
-    <meta name="description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:title" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
+    <meta name="description" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:title" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:description" content="101Skill - Platform belajar secara gratis" />
     <meta property="og:image" content="<?= $uriHelper->assetUrl("images/logo_1.png") ?>" />
     <title>403 Forbidden</title>
     <!-- Favicon icon -->
@@ -30,7 +30,7 @@ require_once __DIR__ . "/../../helpers/uriHelper.php";
                         <h4><i class="fa fa-times-circle text-danger"></i> Forbidden Error</h4>
                         <p>Anda tidak punya akses untuk halaman ini</p>
                         <div>
-                            <a class="btn btn-success" href="<?= $uriHelper->baseUrl("index.php?page=main") ?>">Kembali ke home</a>
+                            <a class="btn btn-primary" href="<?= $uriHelper->baseUrl("index.php?page=main") ?>">Kembali ke home</a>
                         </div>
                     </div>
                 </div>

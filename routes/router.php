@@ -41,9 +41,9 @@ class Router
                 case "register":
                     require_once __DIR__ . self::$auth . "register.php";
                     break;
-                    // case "dashboard":
-                    //     (isset($_GET['content']) ? dashboardRoute::manageRoute($_GET['content']) : dashboardRoute::manageRoute("main"));
-                    //     break;
+                case "dashboard":
+                    (isset($_GET['content']) ? dashboardRoute::manageRoute($_GET['content']) : dashboardRoute::manageRoute("main"));
+                    break;
                 case "403":
                     require_once __DIR__ . self::$errors . "403.php";
                     break;
