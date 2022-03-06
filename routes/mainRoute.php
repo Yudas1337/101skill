@@ -37,9 +37,6 @@ class mainRoute
                 sessionMiddleware::cartEmpty();
                 require_once __DIR__ . Router::$public . "finalCheckout.php";
                 break;
-            case "payment":
-                (isset($_GET['content']) ? paymentRoute::manageRoute($_GET['filter']) : mainRoute::manageRoute("main"));
-                break;
             default:
                 require_once __DIR__ . Router::$errors . "404.php";
         }
