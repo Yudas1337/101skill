@@ -3,7 +3,6 @@
 require_once __DIR__ . "/../app/middleware/sessionMiddleware.php";
 require_once __DIR__ . "/dashboardRoute.php";
 require_once __DIR__ . "/mainRoute.php";
-
 /**
  * Define site routing method.
  *
@@ -14,7 +13,7 @@ class Router
     public static $public = "/../views/public/home/";
     public static $auth = "/../views/public/auth/";
     public static $errors = "/../views/errors/";
-    public static $loggedIn = "/../views/public/admin/";
+    public static $loggedIn = "/../views/public/dashboard/";
 
     function __construct()
     {

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../../layouts/dashboard/preload.php";
-require_once __DIR__ . "/../../layouts/dashboard/navbar.php";
+require_once __DIR__ . "/preload.php";
+require_once __DIR__ . "/navbar.php";
 ?>
 
 <!--**********************************
