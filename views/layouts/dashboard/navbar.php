@@ -8,9 +8,9 @@
 ***********************************-->
     <div class="nav-header">
         <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=home') ?>" class="brand-logo">
-            <img class="logo-abbr" src="<?= $uriHelper->assetUrl("images/logo_1.png") ?>" alt="MalangSnack">
-            <img class="logo-compact" src="<?= $uriHelper->assetUrl("images/logo_1.png") ?>" alt="MalangSnack">
-            <img class="brand-title" src="<?= $uriHelper->assetUrl("images/logo_text.png") ?>" alt="MalangSnack">
+            <img class="logo-abbr" src="<?= $uriHelper->assetUrl("images/logo.png") ?>" alt="101Skill">
+            <img class="logo-compact" src="<?= $uriHelper->assetUrl("images/logo.png") ?>" alt="101Skill">
+            <img class="brand-title" src="<?= $uriHelper->assetUrl("images/logo.png") ?>" alt="101Skill">
         </a>
 
         <div class="nav-control">

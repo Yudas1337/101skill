@@ -2,6 +2,14 @@
 
 class fileHelper
 {
+    /**
+     * file helper for uploading to filesystem
+     * 
+     * @param string $upload_path
+     * @param array $files
+     * @return string
+     */
+
     public static function _doUpload(string $upload_path, array $files): string
     {
         $extension = array("jpg", "jpeg", "png");
@@ -18,6 +26,14 @@ class fileHelper
 
         return $foto;
     }
+
+    /**
+     * file helper for removing image from filesystem
+     * 
+     * @param string $upload_path
+     * @param array $files
+     * @return void
+     */
 
     public static function _removeImage(string $upload_path, string $files): void
     {

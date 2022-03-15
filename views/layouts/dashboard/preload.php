@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . "/../../../helpers/uriHelper.php";
-require_once __DIR__ . "/../../../controllers/UserController.php";
-require_once __DIR__ . "/../../../middleware/sessionMiddleware.php";
+require_once __DIR__ . "/../../../app/helpers/uriHelper.php";
+require_once __DIR__ . "/../../../app/helpers/formHelper.php";
+require_once __DIR__ . "/../../../app/controllers/UserController.php";
+require_once __DIR__ . "/../../../app/middleware/sessionMiddleware.php";
 
 $user = new UserController();
 $getUser = $user->getUser();
@@ -12,15 +13,15 @@ $getUser = $user->getUser();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="MalangSnack, Gudang Oleh-oleh, Malang" />
+    <meta name="keywords" content="101Skill - Platform belajar secara gratis" />
     <meta name="author" content="Yudas Malabi" />
-    <meta name="description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:title" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:image" content="<?= $uriHelper->assetUrl("images/logo_1.png") ?>" />
-    <title>MalangSnack - Gudangnya oleh-oleh khas Malang</title>
+    <meta name="description" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:title" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:description" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:image" content="<?= $uriHelper->assetUrl("images/logo.png") ?>" />
+    <title>101Skill - Platform belajar secara gratis</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $uriHelper->assetUrl("images/logo_1.png") ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= $uriHelper->assetUrl("images/logo.png") ?>">
     <link href="<?= $uriHelper->assetUrl("vendor/jqvmap/css/jqvmap.min.css") ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= $uriHelper->assetUrl("vendor/chartist/css/chartist.min.css") ?>">
     <link href="<?= $uriHelper->assetUrl("vendor/datatables/css/jquery.dataTables.min.css") ?>" rel="stylesheet">
