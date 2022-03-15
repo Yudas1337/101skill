@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/classroomRoute.php";
 require_once __DIR__ . "/categoryRoute.php";
+require_once __DIR__ . "/customerRoute.php";
 
 class dashboardRoute
 {
