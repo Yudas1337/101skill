@@ -58,19 +58,19 @@ require_once __DIR__ . "/../../layouts/main/navbar.php";
         <div class="col-md-12">
             <div class="row">
                 <!-- ini foreach-->
-                    <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&id=' ) ?>">
-                            <div class="card item-card">
-                                <div class="card-body">
-                                    <img src="<?= $uriHelper->baseUrl('assets/images/product/' ) ?>" class="img-fluid" alt="">
-                                    <div class="info">
-                                        <h5 class="name"><??></h5>
-                                        <h6 class="mb-0 price">?></h6>
-                                    </div>
+                <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
+                    <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&id=') ?>">
+                        <div class="card item-card">
+                            <div class="card-body">
+                                <img src="<?= $uriHelper->baseUrl('assets/images/product/') ?>" class="img-fluid" alt="">
+                                <div class="info">
+                                    <h5 class="name"><? ?></h5>
+                                    <h6 class="mb-0 price">?></h6>
                                 </div>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                </div>
                 <!-- endforeach -->
             </div>
         </div>
@@ -81,22 +81,24 @@ require_once __DIR__ . "/../../layouts/main/navbar.php";
 
         <div class="col-md-12">
             <div class="row">
-                
-                    <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&id=' . $product->id) ?>">
-                            <div class="card item-card">
-                                <div class="card-body p-0">
-                                    <img src="<?= $uriHelper->baseUrl('assets/images/product/' . $product->thumbnail) ?>" class="img-fluid" alt="">
-                                    <div class="info">
-                                        <h5 class="name"></h5>
-                                        <h6 class="mb-0 price"><></h6>
-                                    </div>
+
+                <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
+                    <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&id=' . $product->id) ?>">
+                        <div class="card item-card">
+                            <div class="card-body p-0">
+                                <img src="<?= $uriHelper->baseUrl('assets/images/product/' . $product->thumbnail) ?>" class="img-fluid" alt="">
+                                <div class="info">
+                                    <h5 class="name"></h5>
+                                    <h6 class="mb-0 price">
+                                        <>
+                                    </h6>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                
-                    
+                        </div>
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </div>
