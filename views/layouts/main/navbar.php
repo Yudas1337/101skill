@@ -35,8 +35,8 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 									</div>
 								</a>
 							<?php else : ?>
-								<a href="<?= $uriHelper->baseUrl('index.php?page=login') ?>" class="btn btn-success mr-2">Masuk</a>
-								<a href="<?= $uriHelper->baseUrl('index.php?page=register') ?>" class="btn btn-outline-success">Daftar</a>
+								<a href="<?= $uriHelper->baseUrl('index.php?page=login') ?>" class="btn btn-primary mr-2">Masuk</a>
+								<a href="<?= $uriHelper->baseUrl('index.php?page=register') ?>" class="btn btn-outline-primary">Daftar</a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -45,10 +45,8 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 						<ul class="nav navbar-nav navbar navbar-left" style="justify-content: center">
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'home' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>">
 									Beranda</a></li>
-							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'product' || $_GET['content'] == 'detail' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=product") ?>">
-									Produk</a></li>
-							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'about' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=about") ?>">
-									Tentang kami</a></li>
+							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'product' || $_GET['content'] == 'detail' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=course") ?>">
+									Materi</a></li>
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=cart") ?>">
 									Keranjang</a></li>
 						</ul>
@@ -72,11 +70,11 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 								<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"></rect>
 							</g>
 						</svg>
-						Home
+						Beranda
 					</a>
 				</li>
-				<li class="nav-item <?= (isset($_GET['content']) && $_GET['content'] == 'product' ? 'active' : '') ?>">
-					<a href="<?= $uriHelper->baseUrl('index.php?page=main&content=product') ?>">
+				<li class="nav-item <?= (isset($_GET['content']) && $_GET['content'] == 'course' ? 'active' : '') ?>">
+					<a href="<?= $uriHelper->baseUrl('index.php?page=main&content=course') ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<rect x="0" y="0" width="24" height="24"></rect>
@@ -87,21 +85,7 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 								<path d="M2.5,12.3684211 L2.5,12.3684211 C2.90055463,12.3684211 3.23115721,12.6816982 3.25269782,13.0816732 L3.51381042,17.9301218 C3.54396441,18.4900338 3.11451066,18.9683769 2.55459863,18.9985309 C2.53641556,18.9995101 2.51820943,19 2.5,19 L2.5,19 C1.93927659,19 1.48472045,18.5454439 1.48472045,17.9847204 C1.48472045,17.966511 1.48521034,17.9483049 1.48618958,17.9301218 L1.74730218,13.0816732 C1.76884279,12.6816982 2.09944537,12.3684211 2.5,12.3684211 Z" fill="#000000" opacity="0.3"></path>
 							</g>
 						</svg>
-						Produk
-					</a>
-				</li>
-				<li class="nav-item <?= (isset($_GET['content']) && $_GET['content'] == 'about' ? 'active' : '') ?>">
-					<a href="<?= $uriHelper->baseUrl('index.php?page=main&content=about') ?>">
-						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
-							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-								<rect x="0" y="0" width="24" height="24"></rect>
-								<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"></path>
-								<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"></path>
-								<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"></rect>
-								<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"></rect>
-							</g>
-						</svg>
-						Tentang Kami
+						Kursus
 					</a>
 				</li>
 				<li class="nav-item <?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'active' : '') ?>">
@@ -116,6 +100,12 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 						Keranjang
 					</a>
 				</li>
+				<li>
+				<form class="form-inline" action="/action_page.php">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search Course">
+				</form>
+				</li>
 			</ul>
+		
 		</div>
 	</div>

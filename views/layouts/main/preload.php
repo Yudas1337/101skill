@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../../../helpers/uriHelper.php";
-require_once __DIR__ . "/../../../controllers/UserController.php";
+require_once __DIR__ . "/../../../app/helpers/uriHelper.php";
+// require_once __DIR__ . "/../../../controllers/UserController.php";
 
 if (isset($_SESSION['user_id'])) {
     $user = new UserController();
