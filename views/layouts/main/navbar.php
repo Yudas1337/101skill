@@ -49,6 +49,11 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 									Materi</a></li>
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=cart") ?>">
 									Keranjang</a></li>
+							<li>
+								<form class="form-inline" action="/action_page.php">
+									<input class="form-control mr-sm-2" type="text" placeholder="Search Course">
+								</form>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -100,12 +105,7 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 						Keranjang
 					</a>
 				</li>
-				<li>
-				<form class="form-inline" action="/action_page.php">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search Course">
-				</form>
-				</li>
 			</ul>
-		
+
 		</div>
 	</div>
