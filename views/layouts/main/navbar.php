@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 				<div class="container-fluid clearfix">
 					<!-- Website Logo -->
 					<div class="logo-header mostion logo-dark">
-						<a href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>"><img width="200" src="<?= $uriHelper->baseUrl('assets/images/logo_text.png') ?>"></a>
+						<a href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>"><img width="200" src="<?= $uriHelper->baseUrl('assets/images/logo.png') ?>"></a>
 					</div>
 					<!-- Nav Toggle Button -->
 					<button onclick="return opensideBar()" class="navbar-toggler collapsed navicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
