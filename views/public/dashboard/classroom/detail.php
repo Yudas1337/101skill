@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $data = $product->getById($id);
 
     $benefit        = new BenefitController();
-    $getBenefit     = $benefit->getAll();
+    $getBenefit     = $benefit->getById($id);
 }
 
 ?>

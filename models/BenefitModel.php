@@ -97,10 +97,11 @@ class BenefitModel extends Config implements ModelInterface
     public function getById(int $id): array
     {
         $arr = array();
-        $sql = $this->db->query("SELECT * FROM categories WHERE id = '$id'")->fetch_object();
-        $arr['id']   = $sql->id;
-        $arr['name'] = $sql->name;
-        $arr['icon'] = $sql->icon;
+
+        $sql = $this->db->query("SELECT * FROM benefits WHERE classrooms_id = '$id'");
+        while ($data = $sql->fetch_object()) {
+            $arr[] = $data;
+        }
 
         return $arr;
     }
