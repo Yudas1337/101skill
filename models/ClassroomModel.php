@@ -63,21 +63,17 @@ class ClassroomModel extends Config implements ModelInterface
 
     public function update(int $id): void
     {
-        $product_id     = $this->formHelper->sanitizeInput($_POST['product_id']);
+        $title          = $this->formHelper->sanitizeInput($_POST['title']);
         $category_id    = $this->formHelper->sanitizeInput($_POST['category_id']);
-        $supplier_id    = $this->formHelper->sanitizeInput($_POST['supplier_id']);
-        $name           = $this->formHelper->sanitizeInput($_POST['name']);
-        $merk           = $this->formHelper->sanitizeInput($_POST['merk']);
         $description    = $this->formHelper->sanitizeInput($_POST['description']);
-        $price          = $this->formHelper->sanitizeInput($_POST['price']);
-        $stock          = $this->formHelper->sanitizeInput($_POST['stock']);
+        $is_visible     = $this->formHelper->sanitizeInput($_POST['is_visible']);
+        $slug           = str_replace(" ", "-", $title);
+        $created_by     = $_SESSION['user_id'];
 
-
-        $sql = $this->db->query("SELECT * FROM product WHERE id = '$id'");
-        $fetch = $sql->fetch_object();
-        $countRows = $sql->num_rows;
-
-        $thumbnail = $fetch->thumbnail;
+        $sql        = $this->db->query("SELECT * FROM classrooms WHERE id = '$id' AND created_by = '$created_by'");
+        $fetch      = $sql->fetch_object();
+        $countRows  = $sql->num_rows;
+        $thumbnail  = $fetch->thumbnail;
 
         if ($countRows > 0) {
             if (!empty($_FILES['thumbnail']['name'])) {
@@ -86,7 +82,7 @@ class ClassroomModel extends Config implements ModelInterface
                 $thumbnail = fileHelper::_doUpload($this->upload_path, $thumbnail);
             }
 
-            $this->db->query("UPDATE product SET product_id = '$product_id', category_id ='$category_id', supplier_id = '$supplier_id', name = '$name', merk = '$merk', description = '$description', thumbnail = '$thumbnail', price = '$price', stock = '$stock' WHERE id = '$id'");
+            $this->db->query("UPDATE classrooms SET category_id ='$category_id', title = '$title', thumbnail = '$thumbnail', description = '$description', is_visible = '$is_visible', slug = '$slug' WHERE id = '$id'");
         } else {
             alertHelper::failedActions("data tidak ditemukan");
         }
@@ -101,9 +97,10 @@ class ClassroomModel extends Config implements ModelInterface
 
     public function delete(int $id): void
     {
-        $sql = $this->db->query("SELECT * FROM product WHERE id = '$id'")->fetch_object();
+        $created_by = $_SESSION['user_id'];
+        $sql = $this->db->query("SELECT * FROM classrooms WHERE id = '$id' AND created_by = '$created_by'")->fetch_object();
         fileHelper::_removeImage($this->upload_path, $sql->thumbnail);
-        $this->db->query("DELETE FROM product WHERE id = '$id'");
+        $this->db->query("DELETE FROM classrooms WHERE id = '$id'");
     }
 
     /**
@@ -116,17 +113,17 @@ class ClassroomModel extends Config implements ModelInterface
     public function getById(int $id): array
     {
         $arr = array();
-        $sql = $this->db->query("SELECT * FROM product WHERE id = '$id'")->fetch_object();
+        $sql = $this->db->query("SELECT c.id, cat.id AS category_id, cat.name AS category_name, c.title, c.thumbnail, c.description, c.is_visible, u.name AS user_name, c.created_at, c.updated_at FROM classrooms c JOIN categories cat ON cat.id = c.category_id JOIN user u ON u.id = c.created_by WHERE c.id = '$id'")->fetch_object();
         $arr['id']              = $sql->id;
-        $arr['product_id']      = $sql->product_id;
         $arr['category_id']     = $sql->category_id;
-        $arr['supplier_id']     = $sql->supplier_id;
-        $arr['name']            = $sql->name;
-        $arr['merk']            = $sql->merk;
-        $arr['description']     = $sql->description;
+        $arr['category_name']   = $sql->category_name;
+        $arr['title']           = $sql->title;
         $arr['thumbnail']       = $sql->thumbnail;
-        $arr['price']           = $sql->price;
-        $arr['stock']           = $sql->stock;
+        $arr['description']     = $sql->description;
+        $arr['is_visible']      = $sql->is_visible;
+        $arr['created_by']      = $sql->user_name;
+        $arr['created_at']      = $sql->created_at;
+        $arr['updated_at']      = $sql->updated_at;
 
         return $arr;
     }

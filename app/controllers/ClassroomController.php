@@ -60,7 +60,7 @@ class ClassroomController extends Controller implements FormInterface
     {
         $this->filterForm();
         $this->classroomModel->update($id);
-        alertHelper::successAndRedirect("Berhasil update Produk", $this->redirect);
+        alertHelper::successAndRedirect("Berhasil update Kelas", $this->redirect);
     }
 
     /**
@@ -117,6 +117,5 @@ class ClassroomController extends Controller implements FormInterface
     {
         formHelper::isNotNull(['title', 'category_id', 'description', 'is_visible']);
         formHelper::validDigit($_POST['category_id']);
-        formHelper::validDigit($_POST['is_visible']);
     }
 }
