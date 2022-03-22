@@ -2,7 +2,7 @@
 require_once __DIR__ . "/Controller.php";
 require_once __DIR__ . "/../../models/ClassroomModel.php";
 require_once __DIR__ . "/../helpers/formHelper.php";
-require_once __DIR__ . "/../interfaces/IForm.php";
+require_once __DIR__ . "/../interfaces/FormInterface.php";
 
 class ClassroomController extends Controller implements FormInterface
 {
@@ -16,38 +16,43 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
-     * Get All Category .
+     * Get All classroom .
      * @return array
      */
+
     public function getAll(): array
     {
-        return $this->classroomModel->show();
+        return $this->classroomModel->getAll();
     }
 
     /**
-     * Get Category By Id .
+     * Get classroom By Id .
      * @return array
      */
+
     public function getById(int $id): array
     {
         return $this->classroomModel->getById($id);
     }
 
     /**
-     * Insert new Category .
+     * Insert new classroom .
      * @return void
      */
+
     public function save(): void
     {
         $this->filterForm();
-        formHelper::shouldUpload($_FILES['thumbnail']['name'], "Foto Produk");
+        formHelper::shouldUpload($_FILES['thumbnail']['name'], "Foto Kelas");
 
         $this->classroomModel->save();
-        alertHelper::successAndRedirect("Berhasil tambah Produk", $this->redirect);
+        alertHelper::successAndRedirect("Berhasil tambah kelas", $this->redirect);
     }
 
     /**
      * update current Category .
+     * 
+     * @param int $id
      * @return void
      */
 
@@ -59,7 +64,9 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
-     * delete Category .
+     * delete classroom .
+     * 
+     * @param int $id
      * @return void
      */
 
@@ -71,7 +78,7 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
-     * Count Product
+     * Count classroom
      * @return int
      */
 
@@ -82,35 +89,34 @@ class ClassroomController extends Controller implements FormInterface
 
 
     /**
-     * Get the latest product
+     * Get the latest classroom
      * @return array
      */
 
-    public function getLatestProduct(): array
+    public function getLatestClassroom(): array
     {
-        return $this->classroomModel->getLatestProduct();
+        return $this->classroomModel->getLatestClassroom();
     }
 
     /**
      * Get the favorite product
      * @return array
      */
-    public function getFavoriteProduct(): array
+
+    public function getFavoriteClassroom(): array
     {
-        return $this->classroomModel->getFavoriteProduct();
+        return $this->classroomModel->getFavoriteClassroom();
     }
 
     /**
      * Filter Form .
      * @return void
      */
+
     public function filterForm(): void
     {
-        formHelper::isNotNull(['product_id', 'name', 'category_id', 'description', 'supplier_id', 'merk', 'price', 'stock']);
-        formHelper::digitAndChar('Kode Produk', $_POST['product_id']);
+        formHelper::isNotNull(['title', 'category_id', 'description', 'is_visible']);
         formHelper::validDigit($_POST['category_id']);
-        formHelper::validDigit($_POST['supplier_id']);
-        formHelper::validDigit($_POST['price']);
-        formHelper::validDigit($_POST['stock']);
+        formHelper::validDigit($_POST['is_visible']);
     }
 }

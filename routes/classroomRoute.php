@@ -19,6 +19,9 @@ class classroomRoute
             case "add":
                 require_once __DIR__ . Router::$loggedIn . "classroom/add.php";
                 break;
+            case "detail":
+                require_once __DIR__ . Router::$loggedIn . "classroom/detail.php";
+                break;
             case "edit":
                 require_once __DIR__ . Router::$loggedIn . "classroom/edit.php";
                 break;
