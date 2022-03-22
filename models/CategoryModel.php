@@ -4,7 +4,6 @@ require_once __DIR__ . "/../app/interfaces/ModelInterface.php";
 require_once __DIR__ . "/../app/helpers/formHelper.php";
 require_once __DIR__ . "/../app/helpers/fileHelper.php";
 
-
 class CategoryModel extends Config implements ModelInterface
 {
     private $formHelper;

@@ -21,7 +21,7 @@ require_once __DIR__ . "/navbar.php";
                         <span class="nav-text">Kelas</span>
                     </a>
                     <ul aria-expanded="true">
-                        <li class="<?= (isset($_GET['content']) && $_GET['content'] == "classroom" ? "mm-active" : "") ?>"><a class="<?= (isset($_GET['content']) && $_GET['content'] == "classroom" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=classroom&menu=list") ?>">List Kelas</a></li>
+                        <li class="<?= (isset($_GET['content']) && $_GET['content'] == "classroom" || $_GET['content'] == "module" ? "mm-active" : "") ?>"><a class="<?= (isset($_GET['content']) && $_GET['content'] == "classroom" || $_GET['content'] == "module" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=classroom&menu=list") ?>">List Kelas</a></li>
                         <li class="<?= (isset($_GET['content']) && $_GET['content'] == "category" ? "mm-active" : "") ?>"><a class="<?= (isset($_GET['content']) && $_GET['content'] == "category" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=category&menu=list") ?>">Kategori</a></li>
                     </ul>
                 </li>

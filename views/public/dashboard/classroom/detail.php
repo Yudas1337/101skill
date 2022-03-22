@@ -3,6 +3,8 @@ require_once __DIR__ . "/../../../layouts/dashboard/sidebar.php";
 require_once __DIR__ . "/../../../../app/controllers/ClassroomController.php";
 require_once __DIR__ . "/../../../../app/controllers/CategoryController.php";
 require_once __DIR__ . "/../../../../app/controllers/BenefitController.php";
+require_once __DIR__ . "/../../../../app/controllers/ModuleController.php";
+
 
 if (isset($_GET['id'])) {
     $product = new ClassroomController();
@@ -11,6 +13,9 @@ if (isset($_GET['id'])) {
 
     $benefit        = new BenefitController();
     $getBenefit     = $benefit->getById($id);
+
+    $module         = new ModuleController();
+    $getModule      = $module->getById($id);
 }
 
 ?>
@@ -95,7 +100,42 @@ if (isset($_GET['id'])) {
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">List Materi</h4>
-                        <a href="#" class="btn btn-primary light btn-md"><i class="fa fa-plus-circle"></i> Tambah Materi Kelas</a>
+                        <a href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=add&class_id=' . $data['id']) ?>" class="btn btn-primary light btn-md"><i class="fa fa-plus-circle"></i> Tambah Materi Kelas</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Deskripsi</th>
+                                        <th>Foto</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($getModule as $list) : ?>
+                                        <tr>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $list->title; ?></td>
+                                            <td><?= $list->description ?></td>
+                                            <td><img style="width: 100%;" src="<?= $uriHelper->baseUrl('assets/images/module_thumbnails/' . $list->thumbnail) ?>" alt="<?= $list->title; ?>"></td>
+                                            <td>
+                                                <a style="width: 100%;" class="badge badge-success light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=edit&id=' . $data['id']) ?>"><i class="fa fa-edit me-2"></i>
+                                                    Edit</a>
+                                                <a style="width: 100%;" class="hapusProduk badge badge-danger mt-3 btn-sm light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=delete&id=' . $data['id']) ?>"><i class="fa fa-trash me-2"></i>
+                                                    Hapus</a>
+                                            </td>
+
+                                        </tr>
+                                    <?php $i++;
+                                    endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

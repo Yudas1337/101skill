@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . "/../../models/benefitModel.php";
+require_once __DIR__ . "/../../models/BenefitModel.php";
 require_once __DIR__ . "/../helpers/formHelper.php";
 require_once __DIR__ . "/../interfaces/FormInterface.php";
 

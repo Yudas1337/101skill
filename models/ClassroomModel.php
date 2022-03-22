@@ -82,7 +82,7 @@ class ClassroomModel extends Config implements ModelInterface
                 $thumbnail = fileHelper::_doUpload($this->upload_path, $thumbnail);
             }
 
-            $this->db->query("UPDATE classrooms SET category_id ='$category_id', title = '$title', thumbnail = '$thumbnail', description = '$description', is_visible = '$is_visible', slug = '$slug' WHERE id = '$id'");
+            $this->db->query("UPDATE classrooms SET category_id ='$category_id', title = '$title', thumbnail = '$thumbnail', description = '$description', is_visible = '$is_visible', slug = '$slug', updated_at = NOW() WHERE id = '$id'");
         } else {
             alertHelper::failedActions("data tidak ditemukan");
         }

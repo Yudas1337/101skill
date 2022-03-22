@@ -3,7 +3,7 @@ require_once __DIR__ . "/classroomRoute.php";
 require_once __DIR__ . "/categoryRoute.php";
 require_once __DIR__ . "/customerRoute.php";
 require_once __DIR__ . "/benefitRoute.php";
-
+require_once __DIR__ . "/moduleRoute.php";
 
 class dashboardRoute
 {
@@ -22,6 +22,9 @@ class dashboardRoute
                 break;
             case "classroom":
                 (isset($_GET['menu']) ? classroomRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
+                break;
+            case "module":
+                (isset($_GET['menu']) ? moduleRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
                 break;
             case "category":
                 (isset($_GET['menu']) ? categoryRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
