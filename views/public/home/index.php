@@ -72,7 +72,7 @@ $main = new CategoryController();
 
         <div class="col-md-12">
             <div class="row">
-                <?php foreach ($main->getAlli() as $categories) : ?>
+                <?php foreach ($main->getAll() as $categories) : ?>
                     <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
                         <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=category&id=' . $categories->id) ?>">
                             <div class="card item-card">
