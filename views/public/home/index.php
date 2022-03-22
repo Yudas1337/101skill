@@ -49,26 +49,27 @@ $main = new CategoryController();
                 </div>
             </div>
         </div>
-        <br><br>
-        <div class="container shadow p-3 mb-5 bg-white rounded">
-        <div class="row justify-content-center">
-            <div class="col-4">
-            <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
-            <h2>100+ Materi</h2>
-            </div>
-            <div class="col-4">
-            <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
-            <h2>100+ Materi</h2>
-            </div>
-            <div class="col-4">
-            <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
-            <h2>100+ Materi</h2>
+        <div class="col-md-12">
+            <div class="container shadow p-3 mb-5 mt-5 bg-white rounded">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
+                        <h2>100+ Materi</h2>
+                    </div>
+                    <div class="col-4">
+                        <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
+                        <h2>100+ Materi</h2>
+                    </div>
+                    <div class="col-4">
+                        <img width="150" height="150" src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
+                        <h2>100+ Materi</h2>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-        <div class="shadow-sm bg-white rounded" style="width: 200px; height: 50px;">
+
         <h3>Category</h3>
-        
+
 
         <div class="col-md-12">
             <div class="row">
@@ -77,7 +78,7 @@ $main = new CategoryController();
                         <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=category&id=' . $categories->id) ?>">
                             <div class="card item-card">
                                 <div class="card-body">
-                                    <img src="<?= $uriHelper->baseUrl('assets/images/categories/' . $categories->icon) ?>" class="img-fluid" alt="">
+                                    <img src="<?= $uriHelper->assetUrl('images/categories/' . $categories->icon) ?>" class="img-fluid" alt="">
                                     <div class="info">
                                         <h5 class="name"><?= $categories->name ?></h5>
                                     </div>
@@ -97,10 +98,10 @@ $main = new CategoryController();
             <div class="row">
                 <!-- ini foreach-->
                 <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                    <a href="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
+                    <a href="">
                         <div class="card item-card">
                             <div class="card-body">
-                                <img src="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>" class="img-fluid" alt="">
+                                <img src="<?= $uriHelper->assetUrl('images/ipa.jpg') ?>" class="img-fluid" alt="">
                                 <div class="info">
                                     <h5 class="name"><? ?></h5>
                                     <h6 class="mb-0 price">IPA</h6>
@@ -110,10 +111,10 @@ $main = new CategoryController();
                     </a>
                 </div>
                 <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                    <a href="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
+                    <a href="">
                         <div class="card item-card">
                             <div class="card-body">
-                                <img src="<?= $uriHelper->baseUrl('assets/images/IPS.jpg') ?>" class="img-fluid" alt="">
+                                <img src="<?= $uriHelper->assetUrl('images/IPS.jpg') ?>" class="img-fluid" alt="">
                                 <div class="info">
                                     <h5 class="name"><? ?></h5>
                                     <h6 class="mb-0 price">IPS</h6>
@@ -159,7 +160,7 @@ $main = new CategoryController();
         <div class="col-md-12">
             <div class="row">
 
-            <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
+                <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
                     <a href="<?= $uriHelper->baseUrl('assets/images/ipa.jpg') ?>">
                         <div class="card item-card">
                             <div class="card-body">
@@ -215,14 +216,13 @@ $main = new CategoryController();
 
             </div>
         </div>
+
     </div>
 
-</div>
-
-<!--**********************************
+    <!--**********************************
             Content body end
         ***********************************-->
 
-<?php
-require_once __DIR__ . "/../../layouts/main/footer.php";
-?>
+    <?php
+    require_once __DIR__ . "/../../layouts/main/footer.php";
+    ?>
