@@ -63,22 +63,25 @@ class ModuleModel extends Config implements ModelInterface
 
     public function update(int $id): void
     {
-        $name = $this->formHelper->sanitizeInput($_POST['name']);
+        $title          = $this->formHelper->sanitizeInput($_POST['title']);
+        $description    = $this->formHelper->sanitizeInput($_POST['description']);
+        $content        = $_POST['content'];
+        $slug           = str_replace(" ", "-", $title);
 
-        $sql = $this->db->query("SELECT * FROM categories WHERE id = '$id'");
-        $fetch = $sql->fetch_object();
-        $countRows = $sql->num_rows;
+        $sql            = $this->db->query("SELECT * FROM modules WHERE id = '$id'");
+        $fetch          = $sql->fetch_object();
+        $countRows      = $sql->num_rows;
 
-        $icon = $fetch->icon;
+        $thumbnail      = $fetch->thumbnail;
 
         if ($countRows > 0) {
-            if (!empty($_FILES['icon']['name'])) {
-                fileHelper::_removeImage($this->upload_path, $icon);
-                $icon = $_FILES['icon'];
-                $icon = fileHelper::_doUpload($this->upload_path, $icon);
+            if (!empty($_FILES['thumbnail']['name'])) {
+                fileHelper::_removeImage($this->upload_path, $thumbnail);
+                $thumbnail = $_FILES['thumbnail'];
+                $thumbnail = fileHelper::_doUpload($this->upload_path, $thumbnail);
             }
 
-            $this->db->query("UPDATE categories SET name = '$name', icon = '$icon' WHERE id = '$id'");
+            $this->db->query("UPDATE modules SET title = '$title', description = '$description', content = '$content', slug = '$slug', thumbnail = '$thumbnail' WHERE id = '$id'");
         } else {
             alertHelper::failedActions("data tidak ditemukan");
         }
@@ -93,13 +96,16 @@ class ModuleModel extends Config implements ModelInterface
 
     public function delete(int $id): void
     {
-        $sql = $this->db->query("SELECT * FROM categories WHERE id = '$id'")->fetch_object();
-        $query = $this->db->query("DELETE FROM categories WHERE id = '$id'");
+        $sql    = $this->db->query("SELECT * FROM modules WHERE id = '$id'")->fetch_object();
+        $query  = $this->db->query("DELETE FROM modules WHERE id = '$id'");
+
+        $this->redirect .= abs($_GET['class_id']);
+
         if (!$query) {
-            alertHelper::failedAndRedirect("Data kategori sedang digunakan", $this->redirect);
+            alertHelper::failedAndRedirect("Data materi sedang digunakan", $this->redirect);
         } else {
-            fileHelper::_removeImage($this->upload_path, $sql->icon);
-            alertHelper::successAndRedirect("Berhasil hapus kategori", $this->redirect);
+            fileHelper::_removeImage($this->upload_path, $sql->thumbnail);
+            alertHelper::successAndRedirect("Berhasil hapus materi", $this->redirect);
         }
     }
 
@@ -110,7 +116,7 @@ class ModuleModel extends Config implements ModelInterface
      * @return array
      */
 
-    public function getById(int $id): array
+    public function getByClassroomId(int $id): array
     {
         $arr = array();
         $sql = $this->db->query("SELECT * FROM modules WHERE classrooms_id = '$id'");
@@ -120,5 +126,33 @@ class ModuleModel extends Config implements ModelInterface
         }
 
         return $arr;
+    }
+
+    public function getById(int $id): array
+    {
+        $arr = array();
+
+        $sql = $this->db->query("SELECT * FROM modules WHERE id = '$id'")->fetch_object();
+
+        $arr['id']              = $sql->id;
+        $arr['classrooms_id']   = $sql->classrooms_id;
+        $arr['title']           = $sql->title;
+        $arr['description']     = $sql->description;
+        $arr['content']         = $sql->content;
+        $arr['thumbnail']       = $sql->thumbnail;
+        $arr['slug']            = $sql->slug;
+
+        return $arr;
+    }
+
+    /**
+     * count data from modules table
+     *
+     * @return int
+     */
+
+    public function countRows(): int
+    {
+        return $this->db->query("SELECT * FROM modules")->num_rows;
     }
 }

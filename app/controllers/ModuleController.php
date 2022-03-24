@@ -27,12 +27,26 @@ class ModuleController extends Controller implements FormInterface
 
     /**
      * Get module By Id .
+     * 
+     * @param int $id
      * @return array
      */
 
     public function getById(int $id): array
     {
         return $this->moduleModel->getById($id);
+    }
+
+    /**
+     * Get module By Classroom Id .
+     * 
+     * @param int $id
+     * @return array
+     */
+
+    public function getByClassroomId(int $id): array
+    {
+        return $this->moduleModel->getByClassroomId($id);
     }
 
     /**
@@ -61,7 +75,8 @@ class ModuleController extends Controller implements FormInterface
     {
         $this->filterForm();
         $this->moduleModel->update($id);
-        alertHelper::successAndRedirect("Berhasil update Kelas", $this->redirect);
+        $this->redirect .= abs($_GET['class_id']);
+        alertHelper::successAndRedirect("Berhasil update materi", $this->redirect);
     }
 
     /**
@@ -73,7 +88,8 @@ class ModuleController extends Controller implements FormInterface
 
     public function delete(int $id): void
     {
-        $redirect = $this->redirect;
+        $class_id = abs($_GET['class_id']);
+        $redirect = $this->redirect .= $class_id;
         $this->moduleModel->delete($id);
         header("location: $redirect");
     }

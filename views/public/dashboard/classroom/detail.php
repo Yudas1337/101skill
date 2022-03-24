@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     $getBenefit     = $benefit->getById($id);
 
     $module         = new ModuleController();
-    $getModule      = $module->getById($id);
+    $getModule      = $module->getByClassroomId($id);
 }
 
 ?>
@@ -124,9 +124,9 @@ if (isset($_GET['id'])) {
                                             <td><?= $list->description ?></td>
                                             <td><img style="width: 100%;" src="<?= $uriHelper->baseUrl('assets/images/module_thumbnails/' . $list->thumbnail) ?>" alt="<?= $list->title; ?>"></td>
                                             <td>
-                                                <a style="width: 100%;" class="badge badge-success light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=edit&id=' . $data['id']) ?>"><i class="fa fa-edit me-2"></i>
+                                                <a style="width: 100%;" class="badge badge-success light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=edit&class_id=' . $data['id'] . "&id=" . $list->id) ?>"><i class="fa fa-edit me-2"></i>
                                                     Edit</a>
-                                                <a style="width: 100%;" class="hapusProduk badge badge-danger mt-3 btn-sm light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=delete&id=' . $data['id']) ?>"><i class="fa fa-trash me-2"></i>
+                                                <a style="width: 100%;" class="hapusProduk badge badge-danger mt-3 light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=module&menu=delete&class_id=' . $data['id'] . "&id=" . $list->id) ?>"><i class="fa fa-trash me-2"></i>
                                                     Hapus</a>
                                             </td>
 
