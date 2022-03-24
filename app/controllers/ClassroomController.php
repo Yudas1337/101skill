@@ -72,9 +72,7 @@ class ClassroomController extends Controller implements FormInterface
 
     public function delete(int $id): void
     {
-        $redirect = $this->redirect;
         $this->classroomModel->delete($id);
-        header("location: $redirect");
     }
 
     /**

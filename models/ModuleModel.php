@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . "/../configs/Config.php";
 require_once __DIR__ . "/../app/interfaces/ModelInterface.php";
+require_once __DIR__ . "/../app/interfaces/ModuleInterface.php";
 require_once __DIR__ . "/../app/helpers/formHelper.php";
 require_once __DIR__ . "/../app/helpers/fileHelper.php";
 
-class ModuleModel extends Config implements ModelInterface
+class ModuleModel extends Config implements ModelInterface, ModuleInterface
 {
     private $formHelper;
     private $upload_path = "assets/images/module_thumbnails/";
@@ -110,7 +111,7 @@ class ModuleModel extends Config implements ModelInterface
     }
 
     /**
-     * show specified data by id from the table
+     * show specified data by classrooms id from the table
      *
      * @param int $id
      * @return array
@@ -127,6 +128,13 @@ class ModuleModel extends Config implements ModelInterface
 
         return $arr;
     }
+
+    /**
+     * show specified data by id from the table
+     *
+     * @param int $id
+     * @return array
+     */
 
     public function getById(int $id): array
     {

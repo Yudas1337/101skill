@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
                                             <div class="shopping-cart  mb-2 me-3">
                                                 <a class="btn btn-warning light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=classroom&menu=edit&id=' . $data['id']) ?>"><i class="fa fa-edit me-2"></i>
                                                     Edit Kelas</a>
-                                                <a class="hapusProduk btn btn-danger light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=classroom&menu=delete&id=' . $data['id']) ?>"><i class="fa fa-trash me-2"></i>
+                                                <a onclick="return confirm('Apa anda yakin ingin menghapus data?')" class="btn btn-danger light" href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=classroom&menu=delete&id=' . $data['id']) ?>"><i class="fa fa-trash me-2"></i>
                                                     Hapus Kelas</a>
                                             </div>
                                         </div>

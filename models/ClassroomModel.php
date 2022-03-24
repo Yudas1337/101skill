@@ -1,13 +1,16 @@
 <?php
 require_once __DIR__ . "/../configs/Config.php";
 require_once __DIR__ . "/../app/interfaces/ModelInterface.php";
+require_once __DIR__ . "/../app/interfaces/ClassroomInterface.php";
 require_once __DIR__ . "/../app/helpers/formHelper.php";
 require_once __DIR__ . "/../app/helpers/fileHelper.php";
 
-class ClassroomModel extends Config implements ModelInterface
+class ClassroomModel extends Config implements ModelInterface, ClassroomInterface
 {
     private $formHelper;
     private $upload_path = "assets/images/classroom_thumbnails/";
+    private $module_path = "assets/images/module_thumbnails/";
+    private $redirect = "index.php?page=dashboard&content=classroom&menu=list";
 
     function __construct()
     {
@@ -89,6 +92,58 @@ class ClassroomModel extends Config implements ModelInterface
     }
 
     /**
+     * count if classroom is already purchased by user
+     * 
+     * @param int $id
+     * @return int
+     */
+
+    public function isPurchasedClassroom(int $id): int
+    {
+        return $this->db->query("SELECT * FROM user_classrooms WHERE classrooms_id = '$id'")->num_rows;
+    }
+
+    /**
+     * delete all modules if classroom is deleted
+     * 
+     * @param int $id
+     * @return int
+     */
+
+    public function massDeleteModules(int $id): void
+    {
+        $arr        = array();
+        $sql        = $this->db->query("SELECT * FROM modules WHERE classrooms_id = '$id'");
+        $countRows  = $sql->num_rows;
+
+        if ($countRows > 0) {
+            while ($data = $sql->fetch_object()) {
+                $arr[] = $data;
+            }
+            foreach ($arr as $data) {
+                fileHelper::_removeImage($this->module_path, $data->thumbnail);
+            }
+
+            $this->db->query("DELETE FROM modules WHERE classrooms_id = '$id'");
+        }
+    }
+
+    /**
+     * delete specified classroom using id and user sesssion
+     * 
+     * @param int $id
+     * @param int $created_by
+     * @return void
+     */
+
+    public function deleteSpecifiedClassroom(int $id, int $created_by): void
+    {
+        $sql = $this->db->query("SELECT * FROM classrooms WHERE id = '$id' AND created_by = '$created_by'")->fetch_object();
+        fileHelper::_removeImage($this->upload_path, $sql->thumbnail);
+        $this->db->query("DELETE FROM classrooms WHERE id = '$id'");
+    }
+
+    /**
      * delete specified classroom by id.
      * 
      * @param int $id
@@ -97,10 +152,13 @@ class ClassroomModel extends Config implements ModelInterface
 
     public function delete(int $id): void
     {
-        $created_by = $_SESSION['user_id'];
-        $sql = $this->db->query("SELECT * FROM classrooms WHERE id = '$id' AND created_by = '$created_by'")->fetch_object();
-        fileHelper::_removeImage($this->upload_path, $sql->thumbnail);
-        $this->db->query("DELETE FROM classrooms WHERE id = '$id'");
+        if ($this->isPurchasedClassroom($id) > 0) {
+            alertHelper::failedAndRedirect('Gagal menghapus! kelas telah dibeli user!', $this->redirect);
+        } else {
+            $this->massDeleteModules($id);
+            $this->deleteSpecifiedClassroom($id, $_SESSION['user_id']);
+            alertHelper::successAndRedirect("Berhasil menghapus kelas!", $this->redirect);
+        }
     }
 
     /**
