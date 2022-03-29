@@ -3,16 +3,34 @@
 		<div class="col-md-4">
 			<div class="row">
 				<a href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>"><img width="200" src="<?= $uriHelper->baseUrl('assets/images/logo.png') ?>"></a>
-				<p class="mt-3">101Skill adalah sebuah online course yang menyajikan  materi tambahan atau pendukung yang berguna untuk melatih skill dalam melakukan sebuah aktivitas dengan gratis</p>
+				<p class="mt-3">101Skill adalah sebuah online course yang menyajikan materi tambahan atau pendukung yang berguna untuk melatih skill dalam melakukan sebuah aktivitas dengan gratis</p>
 			</div>
 		</div>
 
+		<div class="col-md-2 ml-3">
+			<div class="row d-flex flex-column">
+				<h4 class="title mb-4">Site Link</h4>
+				<a class="mb-3 <?= (isset($_GET['content']) && $_GET['content'] == 'home' ? 'text-primary' : '') ?>" href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>">Beranda</a>
+				<a class="mb-3 <?= (isset($_GET['content']) && $_GET['content'] == 'course' || $_GET['content'] == 'detail' ? 'text-primary' : '') ?>" href="<?= $uriHelper->baseUrl("index.php?page=main&content=course") ?>">Kelas</a>
+
+				<a class="mb-3 <?= (isset($_GET['content']) && $_GET['content'] == 'about' ? 'text-primary' : '') ?>" href="<?= $uriHelper->baseUrl("index.php?page=main&content=about") ?>">Tentang Kami</a>
+			</div>
+		</div>
+		<div class="col-md-2 ml-3">
+			<div class="row d-flex flex-column">
+				<h4 class="title mb-4">101Skill</h4>
+				<a class="mb-3" href="<?= $uriHelper->baseUrl('index.php?page=login') ?>">Masuk</a>
+				<a class="mb-3" href="<?= $uriHelper->baseUrl('index.php?page=register') ?>">Daftar</a>
+				<a class="<?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'text-primary' : '') ?>" href="<?= $uriHelper->baseUrl("index.php?page=main&content=cart") ?>">Keranjang</a>
+			</div>
+		</div>
 		<div class="col-md-3 ml-3">
 			<div class="row d-flex flex-column">
 				<h4 class="title mb-4">Kontak</h4>
 				<p><i class="fa fa-home"></i> Jl. Kembang Turi No.4a Jatimulyo Kec. Lowokwaru Kota Malang</p>
 
 				<p><i class="fa fa-phone"></i> +62 822 5718 1297</p>
+				<p><i class="fa fa-envelope"></i> 101skill@gmail.com</p>
 			</div>
 		</div>
 	</div>

@@ -14,13 +14,13 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="MalangSnack, Gudang Oleh-oleh, Malang" />
+    <meta name="keywords" content="101Skill - Platform belajar secara gratis" />
     <meta name="author" content="Yudas Malabi" />
-    <meta name="description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:title" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
-    <meta property="og:description" content="MalangSnack - Gudangnya oleh-oleh khas Malang" />
+    <meta name="description" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:title" content="101Skill - Platform belajar secara gratis" />
+    <meta property="og:description" content="101Skill - Platform belajar secara gratis" />
     <meta property="og:image" content="<?= $uriHelper->assetUrl("images/logo_1.png") ?>" />
-    <title>MalangSnack - Gudangnya oleh-oleh khas Malang</title>
+    <title>101Skill - Platform belajar secara gratis</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= $uriHelper->assetUrl("images/logo_1.png") ?>">
     <link href="<?= $uriHelper->baseUrl('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') ?>" rel="stylesheet">

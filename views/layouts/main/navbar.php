@@ -45,8 +45,10 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 						<ul class="nav navbar-nav navbar navbar-left" style="justify-content: center">
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'home' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=home") ?>">
 									Beranda</a></li>
-							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'product' || $_GET['content'] == 'detail' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=course") ?>">
-									Materi</a></li>
+							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'course' || $_GET['content'] == 'detail' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=course") ?>">
+									Kelas</a></li>
+							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'about' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=about") ?>">
+									Tentang Kami</a></li>
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=cart") ?>">
 									Keranjang</a></li>
 							<li>

@@ -15,8 +15,8 @@ class mainRoute
             case "home":
                 require_once __DIR__ . Router::$public . "index.php";
                 break;
-            case "product":
-                require_once __DIR__ . Router::$public . "product.php";
+            case "course":
+                require_once __DIR__ . Router::$public . "course.php";
                 break;
             case "detail":
                 require_once __DIR__ . Router::$public . "detail.php";

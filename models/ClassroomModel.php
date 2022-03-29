@@ -194,7 +194,7 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
 
     public function countRows(): int
     {
-        return $this->db->query("SELECT * FROM product")->num_rows;
+        return $this->db->query("SELECT * FROM classrooms")->num_rows;
     }
 
     /**
@@ -207,7 +207,7 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
     {
         $arr = array();
 
-        $sql = $this->db->query("SELECT * FROM product ORDER BY id DESC LIMIT 9");
+        $sql = $this->db->query("SELECT * FROM classrooms ORDER BY id DESC LIMIT 9");
         while ($data = $sql->fetch_object()) {
             $arr[] = $data;
         }
@@ -225,7 +225,7 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
     {
         $arr = array();
 
-        $sql = $this->db->query("SELECT DISTINCT od.product_id, p.*, SUM(od.qty) AS favorit FROM order_details od JOIN product p ON od.product_id = p.id GROUP BY p.id ORDER BY favorit DESC LIMIT 9");
+        $sql = $this->db->query("SELECT c.*, COUNT(uc.classrooms_id) AS favorit FROM user_classrooms uc JOIN classrooms c ON uc.classrooms_id = c.id GROUP BY c.id ORDER BY favorit DESC LIMIT 9");
         while ($data = $sql->fetch_object()) {
             $arr[] = $data;
         }
