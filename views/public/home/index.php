@@ -60,7 +60,7 @@ $classroom = new ClassroomController();
             <div class="row">
                 <?php foreach ($main->getAll() as $categories) : ?>
                     <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=category&id=' . $categories->id) ?>">
+                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=course&filter=' . $categories->id) ?>">
                             <div class="card item-card">
                                 <div class="card-body">
                                     <img src="<?= $uriHelper->assetUrl('images/categories/' . $categories->icon) ?>" class="img-fluid" alt="">
@@ -84,7 +84,7 @@ $classroom = new ClassroomController();
                 <!-- ini foreach-->
                 <?php foreach ($classroom->getFavoriteClassroom() as $favorite) : ?>
                     <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detailCourse&slug=' . $favorite->slug . "&id=" . $favorite->id) ?>">
+                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&slug=' . $favorite->slug . "&id=" . $favorite->id) ?>">
                             <div class="card item-card">
                                 <div class="card-body">
                                     <img src="<?= $uriHelper->assetUrl('images/classroom_thumbnails/' . $favorite->thumbnail) ?>" class="img-fluid" alt="">
@@ -109,7 +109,7 @@ $classroom = new ClassroomController();
             <div class="row">
                 <?php foreach ($classroom->getLatestClassroom() as $latest) : ?>
                     <div class="col-xl-3 col-xxl-4 col-lg-6 col-md-12 col-sm-6">
-                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detailCourse&slug=' . $latest->slug . "&id=" . $latest->id) ?>">
+                        <a href="<?= $uriHelper->baseUrl('index.php?page=main&content=detail&slug=' . $latest->slug . "&id=" . $latest->id) ?>">
                             <div class="card item-card">
                                 <div class="card-body">
                                     <img src="<?= $uriHelper->assetUrl('images/classroom_thumbnails/' . $latest->thumbnail) ?>" class="img-fluid" alt="">

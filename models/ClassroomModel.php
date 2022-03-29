@@ -104,6 +104,20 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
     }
 
     /**
+     * check if classroom is already purchased by current user
+     * 
+     * @param int $classrooms_id
+     * @param int $user_id
+     * 
+     * @return int
+     */
+
+    public function isPurchasedByUser(int $classrooms_id, int $user_id): int
+    {
+        return $this->db->query("SELECT * FROM user_classrooms WHERE classrooms_id = '$classrooms_id' AND user_id = '$user_id'")->num_rows;
+    }
+
+    /**
      * delete all modules if classroom is deleted
      * 
      * @param int $id
@@ -171,7 +185,7 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
     public function getById(int $id): array
     {
         $arr = array();
-        $sql = $this->db->query("SELECT c.id, cat.id AS category_id, cat.name AS category_name, c.title, c.thumbnail, c.description, c.is_visible, u.name AS user_name, c.created_at, c.updated_at FROM classrooms c JOIN categories cat ON cat.id = c.category_id JOIN user u ON u.id = c.created_by WHERE c.id = '$id'")->fetch_object();
+        $sql = $this->db->query("SELECT c.id, cat.id AS category_id, cat.name AS category_name, c.title, c.thumbnail, c.description, c.is_visible, u.name AS user_name, c.created_at, c.updated_at, c.slug FROM classrooms c JOIN categories cat ON cat.id = c.category_id JOIN user u ON u.id = c.created_by WHERE c.id = '$id'")->fetch_object();
         $arr['id']              = $sql->id;
         $arr['category_id']     = $sql->category_id;
         $arr['category_name']   = $sql->category_name;
@@ -182,8 +196,37 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
         $arr['created_by']      = $sql->user_name;
         $arr['created_at']      = $sql->created_at;
         $arr['updated_at']      = $sql->updated_at;
+        $arr['slug']            = $sql->slug;
 
         return $arr;
+    }
+
+    /**
+     * Get public classroom By Id .
+     * with filter is_visible should true
+     * 
+     * @return array
+     */
+
+    public function getPublicById(int $id): array
+    {
+        $arr = array();
+        $sql = $this->db->query("SELECT c.id, cat.id AS category_id, cat.name AS category_name, c.title, c.thumbnail, c.description, c.is_visible, u.name AS user_name, c.created_at, c.updated_at, c.slug FROM classrooms c JOIN categories cat ON cat.id = c.category_id JOIN user u ON u.id = c.created_by WHERE c.id = '$id' AND c.is_visible = 1")->fetch_object();
+        if ($sql) {
+            $arr['id']              = $sql->id;
+            $arr['category_id']     = $sql->category_id;
+            $arr['category_name']   = $sql->category_name;
+            $arr['title']           = $sql->title;
+            $arr['thumbnail']       = $sql->thumbnail;
+            $arr['description']     = $sql->description;
+            $arr['is_visible']      = $sql->is_visible;
+            $arr['created_by']      = $sql->user_name;
+            $arr['created_at']      = $sql->created_at;
+            $arr['updated_at']      = $sql->updated_at;
+            $arr['slug']            = $sql->slug;
+
+            return $arr;
+        }
     }
 
     /**

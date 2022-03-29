@@ -26,7 +26,7 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 					<div class="extra-nav">
 						<div class="extra-cell">
 							<?php if (isset($_SESSION['user_id'])) : ?>
-								<a href="<?= $uriHelper->baseUrl('index.php?page=dashboard') ?>" class="profile-box">
+								<a href="<?= $uriHelper->baseUrl('index.php?page=dashboard&content=main') ?>" class="profile-box">
 									<div class="header-info">
 										<span><?= $user['name']; ?></span>
 									</div>
@@ -51,9 +51,9 @@ require_once __DIR__ . "/../../layouts/main/preload.php";
 									Tentang Kami</a></li>
 							<li class="<?= (isset($_GET['content']) && $_GET['content'] == 'cart' ? 'active' : '') ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=main&content=cart") ?>">
 									Keranjang</a></li>
-							<li>
-								<form class="form-inline" action="/action_page.php">
-									<input class="form-control mr-sm-2" type="text" placeholder="Search Course">
+							<li class="mt-3">
+								<form action="<?= $uriHelper->baseUrl('index.php?page=main&content=course') ?>" method="POST" class="input-group search-area style-1 mb-4">
+									<input autocomplete="off" name="search" class="form-control mr-sm-2" type="text" placeholder="Cari Kelas">
 								</form>
 							</li>
 						</ul>

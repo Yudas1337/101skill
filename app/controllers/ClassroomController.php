@@ -36,6 +36,32 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
+     * Get public classroom By Id .
+     * with filter is_visible should true
+     * 
+     * @return array
+     */
+
+    public function getPublicById(int $id): array
+    {
+        return $this->classroomModel->getPublicById($id);
+    }
+
+    /**
+     * Check if classroom is already purchased or not
+     * 
+     * @param int $classrooms_id
+     * @param int $user_id
+     * 
+     * @return int
+     */
+
+    public function isPurchasedClassroom(int $classrooms_id, int $user_id): int
+    {
+        return $this->classroomModel->isPurchasedByUser($classrooms_id, $user_id);
+    }
+
+    /**
      * Insert new classroom .
      * @return void
      */

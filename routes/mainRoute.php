@@ -21,6 +21,9 @@ class mainRoute
             case "detail":
                 require_once __DIR__ . Router::$public . "detail.php";
                 break;
+            case "module":
+                require_once __DIR__ . Router::$public . "module.php";
+                break;
             case "about":
                 require_once __DIR__ . Router::$public . "about.php";
                 break;

@@ -128,7 +128,6 @@ class ModuleModel extends Config implements ModelInterface, ModuleInterface
 
         return $arr;
     }
-
     /**
      * show specified data by id from the table
      *
@@ -140,15 +139,18 @@ class ModuleModel extends Config implements ModelInterface, ModuleInterface
     {
         $arr = array();
 
-        $sql = $this->db->query("SELECT * FROM modules WHERE id = '$id'")->fetch_object();
+        $sql = $this->db->query("SELECT m.*, c.slug AS course_slug, c.title AS course_title FROM modules m JOIN classrooms c ON c.id = m.classrooms_id WHERE m.id = '$id'")->fetch_object();
 
-        $arr['id']              = $sql->id;
-        $arr['classrooms_id']   = $sql->classrooms_id;
-        $arr['title']           = $sql->title;
-        $arr['description']     = $sql->description;
-        $arr['content']         = $sql->content;
-        $arr['thumbnail']       = $sql->thumbnail;
-        $arr['slug']            = $sql->slug;
+        $arr['id']               = $sql->id;
+        $arr['classrooms_id']    = $sql->classrooms_id;
+        $arr['classrooms_slug']  = $sql->course_slug;
+        $arr['classrooms_title'] = $sql->course_title;
+        $arr['title']            = $sql->title;
+        $arr['description']      = $sql->description;
+        $arr['content']          = $sql->content;
+        $arr['thumbnail']        = $sql->thumbnail;
+        $arr['slug']             = $sql->slug;
+        $arr['created_at']       = $sql->created_at;
 
         return $arr;
     }
