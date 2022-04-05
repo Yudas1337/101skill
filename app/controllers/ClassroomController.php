@@ -133,6 +133,16 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
+     * Get current user classroom by session
+     * @return array
+     */
+
+    public function getMyClassroom(): array
+    {
+        return $this->classroomModel->getMyClassroom();
+    }
+
+    /**
      * Filter Form .
      * @return void
      */

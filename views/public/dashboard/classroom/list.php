@@ -30,7 +30,7 @@ $category = new CategoryController();
                             <div class="card-body">
                                 <div class="new-arrival-product">
                                     <div class="new-arrivals-img-contnent">
-                                        <img style="width: 100%;" class="img-fluid" src="<?= $uriHelper->baseUrl('assets/images/classroom_thumbnails/' . $list->thumbnail) ?>" alt="<?= $list->name ?>">
+                                        <img style="width: 100%;" class="img-fluid" src="<?= $uriHelper->baseUrl('assets/images/classroom_thumbnails/' . $list->thumbnail) ?>" alt="<?= $list->title ?>">
                                     </div>
                                     <div class="new-arrival-content text-center mt-3">
                                         <h4><?= $list->title ?></h4>

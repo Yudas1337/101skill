@@ -275,4 +275,23 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
 
         return $arr;
     }
+
+    /**
+     * Get current user classroom by session
+     * @return array
+     */
+
+    public function getMyClassroom(): array
+    {
+        $arr = array();
+
+        $user_id = $_SESSION['user_id'];
+
+        $sql = $this->db->query("SELECT * FROM user_classrooms uc JOIN classrooms c ON uc.classrooms_id = c.id WHERE uc.user_id = '$user_id'");
+        while ($data = $sql->fetch_object()) {
+            $arr[] = $data;
+        }
+
+        return $arr;
+    }
 }

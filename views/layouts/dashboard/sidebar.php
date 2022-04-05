@@ -25,9 +25,9 @@ require_once __DIR__ . "/navbar.php";
                         <li class="<?= (isset($_GET['content']) && $_GET['content'] == "category" ? "mm-active" : "") ?>"><a class="<?= (isset($_GET['content']) && $_GET['content'] == "category" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=category&menu=list") ?>">Kategori</a></li>
                     </ul>
                 </li>
-                <li class="<?= (isset($_GET['content']) && $_GET['content'] == "order" ? "mm-active" : "") ?>"><a class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "order" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=order&menu=list&filter=all") ?>" aria-expanded="false">
+                <li class="<?= (isset($_GET['content']) && $_GET['content'] == "history" ? "mm-active" : "") ?>"><a class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "history" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=history&menu=list") ?>" aria-expanded="false">
                         <i class="flaticon-381-bookmark-1"></i>
-                        <span class="nav-text">Transaksi</span>
+                        <span class="nav-text">Riwayat Klaim</span>
                     </a>
                 </li>
                 <li class="<?= (isset($_GET['content']) && $_GET['content'] == "customer" ? "mm-active" : "") ?>"><a href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=customer&menu=list") ?>" class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "customer" ? "mm-active" : "") ?>" aria-expanded="false">
@@ -36,9 +36,14 @@ require_once __DIR__ . "/navbar.php";
                     </a>
                 </li>
             <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] == 'public') : ?>
-                <li class="<?= (isset($_GET['content']) && $_GET['content'] == "invoice" ? "mm-active" : "") ?>"><a class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "invoice" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=invoice&menu=list") ?>" aria-expanded="false">
+                <li class="<?= (isset($_GET['content']) && $_GET['content'] == "myclass" ? "mm-active" : "") ?>"><a class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "myclass" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=myclass") ?>" aria-expanded="false">
+                        <i class="flaticon-381-notepad"></i>
+                        <span class="nav-text">Kelas Saya</span>
+                    </a>
+                </li>
+                <li class="<?= (isset($_GET['content']) && $_GET['content'] == "myhistory" ? "mm-active" : "") ?>"><a class="ai-icon <?= (isset($_GET['content']) && $_GET['content'] == "myhistory" ? "mm-active" : "") ?>" href="<?= $uriHelper->baseUrl("index.php?page=dashboard&content=myhistory&menu=list") ?>" aria-expanded="false">
                         <i class="flaticon-381-bookmark-1"></i>
-                        <span class="nav-text">Tagihan</span>
+                        <span class="nav-text">Riwayat Klaim</span>
                     </a>
                 </li>
             <?php endif; ?>

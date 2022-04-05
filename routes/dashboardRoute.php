@@ -4,6 +4,9 @@ require_once __DIR__ . "/categoryRoute.php";
 require_once __DIR__ . "/customerRoute.php";
 require_once __DIR__ . "/benefitRoute.php";
 require_once __DIR__ . "/moduleRoute.php";
+require_once __DIR__ . "/historyRoute.php";
+require_once __DIR__ . "/myhistoryRoute.php";
+
 
 class dashboardRoute
 {
@@ -34,6 +37,15 @@ class dashboardRoute
                 break;
             case "benefit":
                 (isset($_GET['menu']) ? benefitRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
+                break;
+            case "history":
+                (isset($_GET['menu']) ? historyRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
+                break;
+            case "myhistory":
+                (isset($_GET['menu']) ? myhistoryRoute::manageRoute($_GET['menu']) : dashboardRoute::manageRoute("main"));
+                break;
+            case "myclass":
+                require_once __DIR__ . Router::$loggedIn . "myclass.php";
                 break;
             case "profile":
                 require_once __DIR__ . Router::$loggedIn . "profile.php";

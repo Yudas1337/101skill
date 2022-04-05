@@ -62,7 +62,7 @@ $total = 0;
                             </div>
                             <form method="POST">
                                 <button type="submit" name="deleteCart" onclick="return confirm('Apa anda yakin ingin mengosongkan keranjang?')" class="btn btn-danger btn-md light mt-5 kosongkanKeranjang"><i class="fa fa-trash"></i> Kosongkan keranjang</button>
-                                <a data-user="<?= (isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null) ?>" href="<?= $uriHelper->baseUrl('index.php?page=main&content=checkout#profile_section') ?>" class="btn btn-success btn-md light mt-5 checkout"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                                <a data-user="<?= (isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null) ?>" href="<?= $uriHelper->baseUrl('index.php?page=main&content=checkout') ?>" class="btn btn-success btn-md light mt-5 checkout"><i class="fa fa-shopping-cart"></i> Klaim kelas</a>
                             </form>
 
                         </div>
@@ -102,7 +102,7 @@ if (isset($_POST['deleteCart'])) {
 
         swal({
                 title: "Apa Anda Yakin?",
-                text: "selanjutnya akan mengarah ke halaman pembayaran",
+                text: "kelas yang ada di keranjang akan anda klaim",
                 icon: "warning",
                 buttons: {
                     confirm: 'YA',
