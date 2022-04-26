@@ -149,7 +149,7 @@ class ClassroomController extends Controller implements FormInterface
 
     public function filterForm(): void
     {
-        formHelper::isNotNull(['title', 'category_id', 'description', 'is_visible']);
+        formHelper::isNotNull(['title', 'category_id', 'description']);
         formHelper::validDigit($_POST['category_id']);
     }
 }
