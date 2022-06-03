@@ -294,4 +294,30 @@ class ClassroomModel extends Config implements ModelInterface, ClassroomInterfac
 
         return $arr;
     }
+
+    /**
+     * Get total orders
+     * @return int
+     */
+
+    public function getTotalOrders(): int
+    {
+        return $this->db->query("SELECT * FROM user_classrooms")->num_rows;
+    }
+
+    /**
+     * new orders
+     * @return array
+     */
+
+    public function getNewOrder(): array
+    {
+        $arr = array();
+        $sql = $this->db->query("SELECT * FROM orders o JOIN order_details od ON od.invoice_id = o.invoice_id JOIN user u ON o.user_id = u.id JOIN classrooms c ON c.id = od.classrooms_id ORDER BY od.id DESC LIMIT 5");
+        while ($data = $sql->fetch_object()) {
+            $arr[] = $data;
+        }
+
+        return $arr;
+    }
 }

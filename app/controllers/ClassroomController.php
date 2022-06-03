@@ -143,6 +143,26 @@ class ClassroomController extends Controller implements FormInterface
     }
 
     /**
+     * Get total orders
+     * @return int
+     */
+
+    public function getTotalOrders(): int
+    {
+        return $this->classroomModel->getTotalOrders();
+    }
+
+    /**
+     * filter orders
+     * @return array
+     */
+
+    public function getLatestTransactions(): array
+    {
+        return $this->classroomModel->getNewOrder();
+    }
+
+    /**
      * Filter Form .
      * @return void
      */
